@@ -1,9 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include "game.h"
 #include <QMainWindow>
-
+#include<QPushButton>
 QT_BEGIN_NAMESPACE
+#include "game.h"
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
@@ -13,13 +14,15 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
-    int check ();
+    void processInput();
+    void update();
+    void render();
 
     ~MainWindow();
 
-private slots:
 
 
+private :
     void on_pushButton_1_clicked();
 
     void on_pushButton_2_clicked();
@@ -38,18 +41,13 @@ private slots:
 
     void on_pushButton_9_clicked();
 
+    void on_pushButton_playaAgain_clicked();
+public Q_SLOTS :
 
-
-
-
-    void on_pushButton_10_clicked();
 
 private:
-    int index=0;
-    int visit[9]= {0};
-    enum {player1='x',player2='o'};
-    int player=player1;
-        bool winner=false;
     Ui::MainWindow *ui;
+    enum{button1, button2, button3, button4, button5, button6, button7, button8, button9, button_playAgain, button0};
+
 };
 #endif // MAINWINDOW_H
